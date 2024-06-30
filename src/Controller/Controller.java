@@ -31,5 +31,9 @@ public class Controller {
     public void parseNumberTelephone(User user, List<String> parameterList) {
         service.parseNumberTelephone(user, parameterList);
     }
+
+    public void setParseGender(User user, List<String> parametersList) {
+        service.setParseGender(user, parametersList);
+    }
 }
 

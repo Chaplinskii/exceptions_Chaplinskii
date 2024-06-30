@@ -5,9 +5,9 @@ import User.User;
 
 import java.util.List;
 
-public class View {
+public class View extends Exception{
     Controller controller = new Controller();
-
+    User user = new User();
     public void start() {
         while (true) {
             setParameters(request());
@@ -15,22 +15,34 @@ public class View {
     }
 
     public User setParameters(List<String> listParameters) {
-        User user = new User();
+
         try {
             controller.parseName(user, listParameters);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return setParameters(request());
+        }finally {
+//            System.out.println(user);
         }
         try {
             controller.parseDate(user, listParameters);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return setParameters(request());
+        }finally {
+//            System.out.println(user);
         }
         try {
             controller.parseNumberTelephone(user, listParameters);
         } catch (Exception e) {
+            System.out.println(e);
+            return setParameters(request());
+        }finally {
+//            System.out.println(user);
+        }
+        try {
+            controller.setParseGender(user,listParameters);
+        }catch (Exception e){
             System.out.println(e);
             return setParameters(request());
         }
