@@ -2,12 +2,15 @@ package View;
 
 import Controller.Controller;
 import User.User;
+import Controller.WorkingFileController;
 
 import java.util.List;
 
-public class View extends Exception{
-    Controller controller = new Controller();
+public class View {
+    private Controller controller = new Controller();
+    private WorkingFileController workingFileController = new WorkingFileController();
     User user = new User();
+
     public void start() {
         while (true) {
             setParameters(request());
@@ -21,31 +24,27 @@ public class View extends Exception{
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return setParameters(request());
-        }finally {
-//            System.out.println(user);
         }
         try {
             controller.parseDate(user, listParameters);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return setParameters(request());
-        }finally {
-//            System.out.println(user);
         }
         try {
             controller.parseNumberTelephone(user, listParameters);
         } catch (Exception e) {
             System.out.println(e);
             return setParameters(request());
-        }finally {
-//            System.out.println(user);
         }
         try {
-            controller.setParseGender(user,listParameters);
-        }catch (Exception e){
+            controller.setParseGender(user, listParameters);
+        } catch (Exception e) {
             System.out.println(e);
             return setParameters(request());
         }
+
+        workingFileController.saveToFile(user);
         System.out.println(user);
         return user;
     }

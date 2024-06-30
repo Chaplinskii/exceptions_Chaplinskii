@@ -1,5 +1,6 @@
 package Service;
 
+import File.WorkingFiles;
 import Parse.ParseDate;
 import Parse.ParseGender;
 import Parse.ParseName;
@@ -19,17 +20,30 @@ public class Service {
         parseGender.setParseGender(user, parametersList);
     }
 
+    public String getParseGender(User user) {
+        return parseGender.getParseGender(user);
+    }
+
     public void parseNumberTelephone(User user, List<String> parameterList) {// Работа с номером телефона
         parseNumberTelephone.parseTelephone(user, parameterList);
+    }
+
+    public String getParseTelephone(User user) {
+        return parseNumberTelephone.getParseTelephone(user);
     }
 
     public void parseDate(User user, List<String> parametersList) {// Работа с Датой рождения
         parseDate.parseDate(user, parametersList);
     }
 
+    public String getParseDate(User user) {
+        return parseDate.getParseDate(user);
+    }
+
     public void parseName(User user, List<String> str) {// Работа с Фамилией Именем Отчеством
         parseName.parseName(user, str);
     }
+
 
     public String requestForParameters() {// Запрос параметров из консоли
         Scanner scanner = new Scanner(System.in);

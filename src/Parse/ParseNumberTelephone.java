@@ -16,4 +16,7 @@ public class ParseNumberTelephone {
             throw new RuntimeException("Не удалось присвоить номер телефона : " + e);
         }
     }
+    public String getParseTelephone(User user){
+        return user.getPhoneNumber().toString();
+    }
 }

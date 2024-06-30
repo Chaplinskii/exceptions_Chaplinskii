@@ -16,4 +16,8 @@ public class ParseGender {
             throw new RuntimeException("Неверный символ Пола");
         }
     }
+    public String getParseGender(User user){
+        String gender = user.getGender().toString().toUpperCase();
+        return gender;
+    }
 }
